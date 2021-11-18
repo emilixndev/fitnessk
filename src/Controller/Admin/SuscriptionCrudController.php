@@ -2,15 +2,17 @@
 
 namespace App\Controller\Admin;
 
-use App\Entity\User;
+use App\Entity\Suscription;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
+use EasyCorp\Bundle\EasyAdminBundle\Field\AssociationField;
+use EasyCorp\Bundle\EasyAdminBundle\Field\CollectionField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
 
-class UserCrudController extends AbstractCrudController
+class SuscriptionCrudController extends AbstractCrudController
 {
     public static function getEntityFqcn(): string
     {
-        return User::class;
+        return Suscription::class;
     }
 
 
@@ -18,8 +20,8 @@ class UserCrudController extends AbstractCrudController
     {
         return [
 
-            TextField::new('name',"Nom"),
-            TextField::new('forname',"prénom"),
+            TextField::new('membercard'),
+            CollectionField::new('users',"Adherent"),
 
         ];
     }

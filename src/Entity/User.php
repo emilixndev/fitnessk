@@ -42,15 +42,27 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
      */
     private $lessons;
 
-    /**
-     * @ORM\OneToOne(targetEntity=Suscription::class, cascade={"persist", "remove"})
-     */
-    private $sub;
+
 
     /**
      * @ORM\OneToMany(targetEntity=Command::class, mappedBy="user")
      */
     private $commands;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=false)
+     */
+    private $name;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=false)
+     */
+    private $forname;
+
+    /**
+     * @ORM\ManyToOne(targetEntity=Suscription::class, inversedBy="users")
+     */
+    private $sub;
 
     public function __construct()
     {
@@ -174,17 +186,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         return $this;
     }
 
-    public function getSub(): ?Suscription
-    {
-        return $this->sub;
-    }
 
-    public function setSub(?Suscription $sub): self
-    {
-        $this->sub = $sub;
-
-        return $this;
-    }
 
     /**
      * @return Collection|Command[]
@@ -212,6 +214,46 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
                 $command->setUser(null);
             }
         }
+
+        return $this;
+    }
+    public function __toString()
+    {
+       return $this->name." ".$this->forname; //TODO change this to name
+    }
+
+    public function getName(): ?string
+    {
+        return $this->name;
+    }
+
+    public function setName(?string $name): self
+    {
+        $this->name = $name;
+
+        return $this;
+    }
+
+    public function getForname(): ?string
+    {
+        return $this->forname;
+    }
+
+    public function setForname(?string $forname): self
+    {
+        $this->forname = $forname;
+
+        return $this;
+    }
+
+    public function getSub(): ?Suscription
+    {
+        return $this->sub;
+    }
+
+    public function setSub(?Suscription $sub): self
+    {
+        $this->sub = $sub;
 
         return $this;
     }

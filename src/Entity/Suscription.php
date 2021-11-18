@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\SuscriptionRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -27,15 +29,22 @@ class Suscription
      */
     private $membercard;
 
-    /**
-     * @ORM\Column(type="integer", nullable=true)
-     */
-    private $solde;
+
 
     /**
      * @ORM\Column(type="array", nullable=true)
      */
     private $options = [];
+
+    /**
+     * @ORM\OneToMany(targetEntity=User::class, mappedBy="sub")
+     */
+    private $users;
+
+    public function __construct()
+    {
+        $this->users = new ArrayCollection();
+    }
 
 
 
@@ -68,17 +77,7 @@ class Suscription
         return $this;
     }
 
-    public function getSolde(): ?int
-    {
-        return $this->solde;
-    }
 
-    public function setSolde(?int $solde): self
-    {
-        $this->solde = $solde;
-
-        return $this;
-    }
 
     public function getOptions(): ?array
     {
@@ -88,6 +87,36 @@ class Suscription
     public function setOptions(?array $options): self
     {
         $this->options = $options;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|User[]
+     */
+    public function getUsers(): Collection
+    {
+        return $this->users;
+    }
+
+    public function addUser(User $user): self
+    {
+        if (!$this->users->contains($user)) {
+            $this->users[] = $user;
+            $user->setSub($this);
+        }
+
+        return $this;
+    }
+
+    public function removeUser(User $user): self
+    {
+        if ($this->users->removeElement($user)) {
+            // set the owning side to null (unless already changed)
+            if ($user->getSub() === $this) {
+                $user->setSub(null);
+            }
+        }
 
         return $this;
     }
