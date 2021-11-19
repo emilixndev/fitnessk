@@ -6,6 +6,7 @@ use App\Entity\Suscription;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
 use EasyCorp\Bundle\EasyAdminBundle\Field\AssociationField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\CollectionField;
+use EasyCorp\Bundle\EasyAdminBundle\Field\DateField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
 
 class SuscriptionCrudController extends AbstractCrudController
@@ -20,8 +21,9 @@ class SuscriptionCrudController extends AbstractCrudController
     {
         return [
 
-            TextField::new('membercard'),
+            DateField::new("date","Date"),
             CollectionField::new('users',"Adherent"),
+            CollectionField::new('options',"Options"),
 
         ];
     }
