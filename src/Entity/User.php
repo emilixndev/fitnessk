@@ -60,7 +60,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     private $forname;
 
     /**
-     * @ORM\ManyToOne(targetEntity=Suscription::class, inversedBy="users")
+     * @ORM\ManyToOne(targetEntity=Subscription::class, inversedBy="users")
      */
     private $sub;
 
@@ -246,12 +246,12 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         return $this;
     }
 
-    public function getSub(): ?Suscription
+    public function getSub(): ?Subscription
     {
         return $this->sub;
     }
 
-    public function setSub(?Suscription $sub): self
+    public function setSub(?Subscription $sub): self
     {
         $this->sub = $sub;
 

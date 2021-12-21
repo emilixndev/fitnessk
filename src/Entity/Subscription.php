@@ -2,15 +2,15 @@
 
 namespace App\Entity;
 
-use App\Repository\SuscriptionRepository;
+use App\Repository\SubscriptionRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * @ORM\Entity(repositoryClass=SuscriptionRepository::class)
+ * @ORM\Entity(repositoryClass=SubscriptionRepository::class)
  */
-class Suscription
+class Subscription
 {
     /**
      * @ORM\Id
@@ -31,19 +31,21 @@ class Suscription
 
 
 
-    /**
-     * @ORM\Column(type="array", nullable=true)
-     */
-    private $options = [];
 
     /**
      * @ORM\OneToMany(targetEntity=User::class, mappedBy="sub")
      */
     private $users;
 
+    /**
+     * @ORM\ManyToMany(targetEntity=Option::class, inversedBy="subscriptions")
+     */
+    private $options;
+
     public function __construct()
     {
         $this->users = new ArrayCollection();
+        $this->options = new ArrayCollection();
     }
 
 
@@ -79,17 +81,7 @@ class Suscription
 
 
 
-    public function getOptions(): ?array
-    {
-        return $this->options;
-    }
 
-    public function setOptions(?array $options): self
-    {
-        $this->options = $options;
-
-        return $this;
-    }
 
     /**
      * @return Collection|User[]
@@ -117,6 +109,30 @@ class Suscription
                 $user->setSub(null);
             }
         }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Option[]
+     */
+    public function getOptions(): Collection
+    {
+        return $this->options;
+    }
+
+    public function addOption(Option $option): self
+    {
+        if (!$this->options->contains($option)) {
+            $this->options[] = $option;
+        }
+
+        return $this;
+    }
+
+    public function removeOption(Option $option): self
+    {
+        $this->options->removeElement($option);
 
         return $this;
     }

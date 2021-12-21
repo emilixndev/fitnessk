@@ -30,10 +30,15 @@ class Option
      */
     private $price;
 
+    /**
+     * @ORM\ManyToMany(targetEntity=Subscription::class, mappedBy="options")
+     */
+    private $subscriptions;
+
 
     public function __construct()
     {
-        $this->suscriptions = new ArrayCollection();
+        $this->subscriptions = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -61,6 +66,33 @@ class Option
     public function setPrice(float $price): self
     {
         $this->price = $price;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Subscription[]
+     */
+    public function getSubscriptions(): Collection
+    {
+        return $this->subscriptions;
+    }
+
+    public function addSubscription(Subscription $subscriptions): self
+    {
+        if (!$this->subscriptions->contains($subscriptions)) {
+            $this->subscriptions[] = $subscriptions;
+            $subscriptions->addOption($this);
+        }
+
+        return $this;
+    }
+
+    public function removeSubscription(Subscription $subscriptions): self
+    {
+        if ($this->subscriptions->removeElement($subscriptions)) {
+            $subscriptions->removeOption($this);
+        }
 
         return $this;
     }

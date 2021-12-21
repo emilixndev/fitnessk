@@ -2,18 +2,18 @@
 
 namespace App\Controller\Admin;
 
-use App\Entity\Suscription;
+use App\Entity\Subscription;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
 use EasyCorp\Bundle\EasyAdminBundle\Field\AssociationField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\CollectionField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\DateField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
 
-class SuscriptionCrudController extends AbstractCrudController
+class SubscriptionCrudController extends AbstractCrudController
 {
     public static function getEntityFqcn(): string
     {
-        return Suscription::class;
+        return Subscription::class;
     }
 
 

@@ -2,25 +2,25 @@
 
 namespace App\Repository;
 
-use App\Entity\Suscription;
+use App\Entity\Subscription;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
 
 /**
- * @method Suscription|null find($id, $lockMode = null, $lockVersion = null)
- * @method Suscription|null findOneBy(array $criteria, array $orderBy = null)
- * @method Suscription[]    findAll()
- * @method Suscription[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
+ * @method Subscription|null find($id, $lockMode = null, $lockVersion = null)
+ * @method Subscription|null findOneBy(array $criteria, array $orderBy = null)
+ * @method Subscription[]    findAll()
+ * @method Subscription[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
  */
-class SuscriptionRepository extends ServiceEntityRepository
+class SubscriptionRepository extends ServiceEntityRepository
 {
     public function __construct(ManagerRegistry $registry)
     {
-        parent::__construct($registry, Suscription::class);
+        parent::__construct($registry, Subscription::class);
     }
 
     // /**
-    //  * @return Suscription[] Returns an array of Suscription objects
+    //  * @return Subscription[] Returns an array of Subscription objects
     //  */
     /*
     public function findByExampleField($value)
@@ -37,7 +37,7 @@ class SuscriptionRepository extends ServiceEntityRepository
     */
 
     /*
-    public function findOneBySomeField($value): ?Suscription
+    public function findOneBySomeField($value): ?Subscription
     {
         return $this->createQueryBuilder('s')
             ->andWhere('s.exampleField = :val')
