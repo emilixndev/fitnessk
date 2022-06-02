@@ -1,0 +1,36 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello SubscribeFitnessController!{% endblock %}
+
+{% block body %}
+
+    {% include "templatePart/navbar.html.twig"%}
+
+    <div class="container">
+
+
+
+        Demande d'inscription
+
+<div class="form-control">
+    {{ form_start(form) }}
+
+
+        Nom :
+    <div >
+        {{form_widget(form.name, {'attr': {'class': 'form-control'}}) }}
+
+        Prenom :
+        {{form_widget(form.lastname, {'attr': {'class': 'form-control'}}) }}
+    </div>
+
+
+    {{form(form)}}
+
+
+
+
+
+    {{ form_end(form) }}
+    </div>
+{% endblock %}

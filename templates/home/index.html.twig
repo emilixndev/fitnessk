@@ -1,0 +1,128 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}FitnessK{% endblock %}
+
+{% block body %}
+
+    <style>
+        .text-red{
+
+            color: red;
+        }
+        .carousel .carousel-item {
+            height: 500px;
+        }
+        img {
+            min-height: 300px;
+            height: 500px;
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+        }
+    </style>
+
+    {% include 'templatePart/navbar.html.twig' %}
+
+    <br/><br/>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-2 text-red">
+              <h3> Club FitnessK</h3>
+            </div>
+            <div class="col-lg-8" ></div>
+            <div class="col-lg-2 text-red" style="text-align: right">
+               <h3>1Vie, 1Corp</h3>
+            </div>
+        </div>
+    </div>
+    <br/>
+
+    <div class="container" >
+        <div id="carouselExampleControls" class="carousel slide" data-ride="carousel" >
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+                    <img class="d-block w-100" src="{{ asset('img/pic/img1.jpeg') }}" alt="First slide">
+                </div>
+                <div class="carousel-item">
+                    <img class="d-block w-100" src="{{ asset('img/pic/img1.jpeg') }}" alt="Second slide">
+                </div>
+                <div class="carousel-item">
+                    <img class="d-block w-100" src="{{ asset('img/pic/img1.jpeg') }}" alt="Third slide">
+                </div>
+            </div>
+            <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="sr-only"></span>
+            </a>
+            <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="sr-only"></span>
+            </a>
+        </div>
+    </div>
+
+<!-- text -->
+<br/>
+<div class="container" style="text-align: center">
+    <p>a salle de sport FITNESS K à Pfaffenhoffen (67)* près de Strasbourg est un pôle de Forme pluridisciplinaire. Il est doté d’une salle de musculation et de cardio-training,
+        d’un sauna, d’une salle de cours collectifs climatisée ainsi qu’une salle de RPM.</p>
+    <p>Y sont enseignés, des cours de Cycling, Body Pump,
+    Circuit Training, Fit Dance, Abdos express, Gym Douce,
+    Pilates avec et sans accessoires, Stretching , Shaping,
+        Cuisses Abdos Fessiers, Yoga et Danse.</p>
+    <p>On y dispense également des bilans physiques et alimentaires.</p>
+</div>
+
+
+
+
+    <div class="container">
+
+        <h1 class="text-red" style="text-align: center">Planning des cours</h1>
+
+
+
+
+        <img src="{{ asset('img/pic/pla.jpeg') }}" >
+
+    </div>
+
+
+
+<br/>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-6" style="text-align: center" >
+
+                <H5 class="text-red">
+                    Offre du moment
+                </H5>
+                <H4 style="font-weight: bold" class="text-red">
+                    0€ de frais d’inscription
+                </H4>
+                <br/>
+                <H5 class="text-red">
+                    Tarifs
+                </H5>
+
+                <img src="{{asset("img/shop/article/subscribe.jpeg")}}" style="height: 200px">
+            </div>
+
+            <div class="col-lg-6" style="text-align: center">
+                <br/>
+                <h3 class="text-red">
+                    Invitation gratuite
+                </h3>
+<br/><br/><br/>
+                <img src="{{asset("img/pic/invitation.jpeg")}}" style="height: 200px">
+            </div>
+        </div>
+    </div>
+
+
+
+    <br/>   <br/>
+
+    {% include 'templatePart/footer.html.twig' %}
+
+{% endblock %}
