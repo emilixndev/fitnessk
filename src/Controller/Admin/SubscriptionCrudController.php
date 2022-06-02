@@ -24,6 +24,7 @@ class SubscriptionCrudController extends AbstractCrudController
             DateField::new("date","Date"),
             CollectionField::new('users',"Adherent"),
             CollectionField::new('options',"Options"),
+            TextField::new('state',"Statut"),
 
         ];
     }

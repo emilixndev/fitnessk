@@ -64,6 +64,16 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
      */
     private $sub;
 
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $sexe;
+
+    /**
+     * @ORM\Column(type="date", nullable=true)
+     */
+    private $birth_day;
+
     public function __construct()
     {
         $this->lessons = new ArrayCollection();
@@ -254,6 +264,30 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     public function setSub(?Subscription $sub): self
     {
         $this->sub = $sub;
+
+        return $this;
+    }
+
+    public function getSexe(): ?string
+    {
+        return $this->sexe;
+    }
+
+    public function setSexe(string $sexe): self
+    {
+        $this->sexe = $sexe;
+
+        return $this;
+    }
+
+    public function getBirthDay(): ?\DateTimeInterface
+    {
+        return $this->birth_day;
+    }
+
+    public function setBirthDay(?\DateTimeInterface $birth_day): self
+    {
+        $this->birth_day = $birth_day;
 
         return $this;
     }

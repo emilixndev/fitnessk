@@ -42,6 +42,11 @@ class Subscription
      */
     private $options;
 
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $state;
+
     public function __construct()
     {
         $this->users = new ArrayCollection();
@@ -133,6 +138,18 @@ class Subscription
     public function removeOption(Option $option): self
     {
         $this->options->removeElement($option);
+
+        return $this;
+    }
+
+    public function getState(): ?string
+    {
+        return $this->state;
+    }
+
+    public function setState(string $state): self
+    {
+        $this->state = $state;
 
         return $this;
     }
