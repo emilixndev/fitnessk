@@ -1,0 +1,74 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Error{% endblock %}
+
+{% block body %}
+    <style>
+
+
+        .center{
+            text-align: center;
+        }
+    </style>
+    {% include "templatePart/navbar.html.twig"%}
+
+    <div class="container">
+
+    <div class="center">
+
+    <br>
+
+    <p class="center">{{ message}}</p>
+
+    {% if sub is defined %}
+
+        <h2>Récape de votre demande</h2>
+
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th scope="col">Type</th>
+                <th scope="col">Date de début</th>
+                <th scope="col">Statut</th>
+                <th scope="col">Options</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td>
+
+                {%if sub.type == "month"%}
+                    Mensuelle
+                    {%else%}
+                        Annuelle
+                    {%endif%}
+
+
+                </td>
+                <td>{{sub.date|date("m/d/Y")}}</td>
+                <td>                       {%if sub.state == "firststep"%}
+                        En cours de validation
+                    {%else%}
+                        Validé
+                    {%endif%}</td>
+                <td>
+                    <ul>
+                        {% for option in sub.options %}
+                            <li style="list-style-type: -moz-ethiopic-numeric;"> {{ option.name }}</li>
+                        {% endfor %}
+                    </ul></td>
+            </tr>
+            </tbody>
+        </table>
+
+
+        </div>
+
+        </div>
+        {%else%}
+        <p>Vous pouvez vous connecter <a href="{{path('app_login') }}">içi</a></p>
+    {% endif%}
+
+
+
+{% endblock %}

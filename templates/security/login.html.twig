@@ -1,0 +1,40 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Connexion{% endblock %}
+
+{% block body %}
+    {% include "templatePart/navbar.html.twig"%}
+
+    <div class="container">
+        <form method="post">
+            {% if error %}
+                <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+            {% endif %}
+            <div class="row">
+                <div class="col-lg-4"></div>
+                <br><br>
+                <div class="col-lg-4">
+                    <br><br>
+                <h1 class="h3">Veuillez vous connecter</h1>
+                <label> email :</label>
+                <input type="email" name="email" id="inputEmail" class="form-control" autocomplete="email" required autofocus>
+                <br>
+                    <label >Mot de passe : </label>
+                <input type="password" name="password" id="inputPassword" class="form-control" autocomplete="current-password" required>
+
+                <input type="hidden" name="_csrf_token"
+                       value="{{ csrf_token('authenticate') }}"
+                >
+                <br>
+                <button class="btn btn-success" type="submit">
+                    Connexion
+                </button>
+                    <button class="btn btn-danger" type="reset">
+                        Effacer
+                    </button>
+            </form>
+            </div>
+            <div class="col-lg-4"></div>
+             </div>
+    </div>
+{% endblock %}

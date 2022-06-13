@@ -47,6 +47,11 @@ class Subscription
      */
     private $state;
 
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $type;
+
     public function __construct()
     {
         $this->users = new ArrayCollection();
@@ -150,6 +155,18 @@ class Subscription
     public function setState(string $state): self
     {
         $this->state = $state;
+
+        return $this;
+    }
+
+    public function getType(): ?string
+    {
+        return $this->type;
+    }
+
+    public function setType(string $type): self
+    {
+        $this->type = $type;
 
         return $this;
     }

@@ -18,10 +18,18 @@
                 <span class="navbar-toggler-icon"></span>
             </button>
             <ul class="nav navbar-nav navbar-right">
-                <li><a class="nav-item nav-link nav-category" href="#resume">Activité</a></li>
+{#                <li><a class="nav-item nav-link nav-category" href="#resume">Activité</a></li>#}
                 <li><a class="nav-item nav-link nav-category" href="{{ path('subscribe_fitness') }}">Abonnement</a></li>
-                <li><a class="nav-item nav-link nav-category" href="#experience">Boutique</a></li>
-                <li><a class="nav-item nav-link nav-category" href="#experience">Contact</a></li>
+{#                <li><a class="nav-item nav-link nav-category" href="#experience">Boutique</a></li>#}
+{#                <li><a class="nav-item nav-link nav-category" href="#experience">Contact</a></li>#}
+
+                {% if app.user %}
+                    <li><a class="nav-item nav-link nav-category" href="{{ path('app_logout') }}">Déconnexion</a></li>
+                {% else %}
+                    <li><a class="nav-item nav-link nav-category" href="{{ path('app_register') }}">Enregistrement</a></li>
+                    <li><a class="nav-item nav-link nav-category" href="{{ path('app_login') }}">Connexion</a></li>
+                {% endif %}
+
             </ul>
         </div>
         </div>

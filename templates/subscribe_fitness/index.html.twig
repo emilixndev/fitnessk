@@ -10,27 +10,28 @@
 
 
 
-        Demande d'inscription
+    <h1> Demande d'inscription</h1>
 
-<div class="form-control">
+        <div class="form-control">
     {{ form_start(form) }}
 
 
-        Nom :
-    <div >
-        {{form_widget(form.name, {'attr': {'class': 'form-control'}}) }}
+    {{ form_row(form.startdate)}}<br>
+    {{ form_row(form.options, {'attr': {'class': 'form-control'}}) }}<br>
 
-        Prenom :
-        {{form_widget(form.lastname, {'attr': {'class': 'form-control'}}) }}
-    </div>
+    {{ form_row(form.type)}}<br>
 
 
-    {{form(form)}}
+
+    <button type="submit" class="btn btn-success">Valider</button>
+    <button type="reset" class="btn btn-danger">Effacer</button>
+
 
 
 
 
 
     {{ form_end(form) }}
+</div>
     </div>
 {% endblock %}
