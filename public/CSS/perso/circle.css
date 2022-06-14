@@ -1,0 +1,69 @@
+
+.circleBlack{
+    border: solid black 2px;
+    border-radius: 20px;
+    width: fit-content;
+    padding: 4px;
+    color: black;
+}
+
+.circleGreen{
+    border: solid green 2px;
+    border-radius: 20px;
+    width: fit-content;
+    padding: 4px;
+    color: green;
+}
+.circleRed{
+    border: solid red 2px;
+    border-radius: 20px;
+    width: fit-content;
+    padding: 4px;
+    color: red;
+}
+.circleOrange{
+    border: solid orange 2px;
+    border-radius: 20px;
+    width: fit-content;
+    padding: 4px;
+    color: orange;
+}
+
+#cercleWaiting {
+    margin-top: 5px;
+    width: 10px;
+    height: 10px;
+    border-radius: 20px;
+    background: orange;
+    float:left;
+    margin-right: 5px;
+}
+#cercleValidate {
+    margin-top: 5px;
+    width: 10px;
+    height: 10px;
+    border-radius: 20px;
+    background: green;
+    float:left;
+    margin-right: 5px;
+}
+#cercleRefuse {
+    margin-top: 5px;
+    width: 10px;
+    height: 10px;
+    border-radius: 20px;
+    background: red;
+    float:left;
+    margin-right: 5px;
+}
+
+
+#cercleError {
+    margin-top: 5px;
+    width: 10px;
+    height: 10px;
+    border-radius: 20px;
+    background: black;
+    float:left;
+    margin-right: 5px;
+}

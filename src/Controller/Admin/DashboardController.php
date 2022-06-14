@@ -19,7 +19,7 @@ class DashboardController extends AbstractDashboardController
      */
     public function index(): Response
     {
-        return parent::index();
+        return $this->render("admin/dashboardAdmin.html.twig");
     }
 
     public function configureDashboard(): Dashboard
@@ -32,25 +32,19 @@ class DashboardController extends AbstractDashboardController
     {
         yield MenuItem::linktoDashboard('Dashboard', 'fa fa-home');
 
-        yield MenuItem::subMenu("Abonnement","")->setSubItems([
-            MenuItem::linkToCrud('A valider', 'fas fa-user', Subscription::class)
-                ->setQueryParameter('state', 'firststep'),
-            MenuItem::linkToCrud('Valide', 'fas fa-user', Subscription::class),
-        ]);
+
 
 
         yield MenuItem::section("Abonnement","fas fa-store-alt");
 
-        yield MenuItem::linkToCrud('A valider', 'fas fa-user', Subscription::class)
-            ->setQueryParameter('filters[state]', 'firststep');
-        yield MenuItem::linkToCrud('Valide', 'fas fa-user', Subscription::class);
+        yield MenuItem::linkToCrud('Liste abonnement', 'fas fa-user', Subscription::class);
 
-
-        yield MenuItem::section("Boutique","fas fa-store-alt");
-
-
-        yield MenuItem::linkToCrud('Commande', 'fas fa-shopping-basket', Command::class);
-        yield MenuItem::linkToCrud('Article', 'fas fa-shopping-cart', Article::class);
+//
+//        yield MenuItem::section("Boutique","fas fa-store-alt");
+//
+//
+//        yield MenuItem::linkToCrud('Commande', 'fas fa-shopping-basket', Command::class);
+//        yield MenuItem::linkToCrud('Article', 'fas fa-shopping-cart', Article::class);
 
 
         yield MenuItem::section("réglage","fas fa-tools");

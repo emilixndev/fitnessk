@@ -1,0 +1,28 @@
+{# @var ea \EasyCorp\Bundle\EasyAdminBundle\Context\AdminContext #}
+{# @var field \EasyCorp\Bundle\EasyAdminBundle\Dto\FieldDto #}
+{# @var entity \EasyCorp\Bundle\EasyAdminBundle\Dto\EntityDto #}
+
+{% block stylesheets %}
+    <link rel="stylesheet" type="text/css" href="{{asset("CSS/perso/circle.css") }}" />
+{% endblock %}
+
+
+{% if field.formattedValue == 'en_attente'   %}
+    <div class="circleOrange">
+        <div id="cercleWaiting"></div>{%trans%}En attente{%endtrans%}
+    </div>
+{% elseif  field.formattedValue == 'valide'  %}
+    <div class="circleGreen">
+        <div id="cercleValidate"></div> {%trans%}Validé{%endtrans%}
+    </div>
+{% elseif  field.formattedValue == 'refuse' %}
+    <div class="circleRed">
+        <div id="cercleRefuse"></div> {%trans%}Refusé{%endtrans%}
+    </div>
+{% else %}
+    <div class="circleBlack">
+        <div id="cercleError"></div> {%trans%}Erreur{%endtrans%}
+    </div>
+
+{% endif %}
+

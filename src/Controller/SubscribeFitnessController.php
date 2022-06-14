@@ -46,7 +46,7 @@ class SubscribeFitnessController extends AbstractController
                     $user = $this->getUser();
                     $sub = new Subscription();
                     $sub->setDate($form->get("startdate")->getData());
-                    $sub->setState("firststep");
+                    $sub->setState("en_attente");
                     $type = "month";
                     if ($form->get("type")->getData()) $type = "year";
                     $sub->setType($type);
