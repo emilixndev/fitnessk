@@ -2,13 +2,13 @@
 
     color: red;
 }
-.slick-slide {
-    height:700px;
-}
+
 img {
     min-height: 300px;
     height: 500px;
     display: block;
     margin-left: auto;
     margin-right: auto;
+    border: solid black 2px;
+    border-radius: 10px;
 }

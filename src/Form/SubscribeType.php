@@ -18,8 +18,13 @@ class SubscribeType extends AbstractType
     {
         $builder
             ->add('startdate', DateType::class,[
-                "label" => "Date de début :"
-            ])
+                "label" => "Date de début :",
+                    'widget' => 'choice',
+                 'years' => range(date('Y'), date('Y')),
+                 'months' => range(date('m'), date('m')+2),
+                ]
+               )
+
 
             ->add('options',ChoiceType::class,[
                 "label" => "Choix de l'option : ",

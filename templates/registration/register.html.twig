@@ -15,8 +15,13 @@
 
                     {{ form_row(registrationForm.email, {'attr': {'class': 'form-control'}}) }}
 
-                    {{ form_row(registrationForm.plainPassword, {'attr': {'class': 'form-control'}}) }}
-
+                    {{form_label(registrationForm.plainPassword)}}
+                    {{ form_widget(registrationForm.plainPassword, {'attr': {'class': 'form-control'}}) }}
+                    {%if(form_errors(registrationForm.plainPassword))%}
+                    <div class="alert alert-danger" role="alert">
+                        {{ form_errors(registrationForm.plainPassword)}}
+                    </div>
+                    {%endif%}
                     {{ form_row(registrationForm.name, {'attr': {'class': 'form-control'}}) }}
 
                     {{ form_row(registrationForm.forname, {'attr': {'class': 'form-control'}}) }}

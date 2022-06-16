@@ -2,15 +2,13 @@
 
 {% block title %}FitnessK{% endblock %}
 {% block stylesheets %}
-    <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
-    <link href="{{asset('CSS/slick/slick.css')}}" rel="stylesheet">
-    <link href="{{asset('CSS/slick/slick-theme.css')}}" rel="stylesheet">
     <link href="{{asset('CSS/home.css')}}" rel="stylesheet">
 {% endblock %}
 
 {% block body %}
     {% include 'templatePart/navbar.html.twig' %}
     <br/><br/>
+
     <div class="container">
         <div class="row">
             <div class="col-lg-2 text-red">
@@ -24,11 +22,10 @@
     </div>
     <br/>
     <div class="container" >
-        <div class="slide">
-           <img     src="{{ asset('img/pic/img1.jpeg') }}" alt="First slide">
-            <img  src="{{ asset('img/pic/img1.jpeg') }}" alt="First slidsqe">
-            <img  src="{{ asset('img/pic/img1.jpeg') }}" alt="First slidse">
-        </div>
+
+           <img src="{{ asset('img/pic/img1.jpeg') }}" alt="First slide">
+
+
     </div>
     <br/>
     <div class="container" style="text-align: center">
@@ -73,9 +70,3 @@
         <br/><br/>
 {% endblock %}
 
-{% block javascripts %}
-    <script type="text/javascript" src="//code.jquery.com/jquery-1.11.0.min.js"></script>
-    <script type="text/javascript" src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
-    <script type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
-    <script type="text/javascript" src="{{asset("JS/home.js")}}"></script>
-{% endblock %}

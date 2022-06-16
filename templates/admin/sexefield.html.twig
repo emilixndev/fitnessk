@@ -1,0 +1,12 @@
+{# @var ea \EasyCorp\Bundle\EasyAdminBundle\Context\AdminContext #}
+{# @var field \EasyCorp\Bundle\EasyAdminBundle\Dto\FieldDto #}
+{# @var entity \EasyCorp\Bundle\EasyAdminBundle\Dto\EntityDto #}
+
+{% if field.formattedValue == 'male'   %}
+        <i class="fa fa-mars" aria-hidden="true"></i>
+{% elseif  field.formattedValue == 'female'  %}
+    <i class="fa fa-venus" aria-hidden="true"></i>
+{% else %}
+    <i class="fa fa-male" aria-hidden="true"></i>
+{% endif %}
+

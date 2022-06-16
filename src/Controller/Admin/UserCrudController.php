@@ -22,7 +22,7 @@ class UserCrudController extends AbstractCrudController
 
             TextField::new('name',"Nom"),
             TextField::new('forname',"prénom"),
-            TextField::new('sexe',"Sexe"),
+            TextField::new('sexe',"Sexe")->setTemplatePath("admin/sexefield.html.twig"),
             TextField::new('email',"email"),
             DateField::new('birth_day',"Date de naissance")
 
