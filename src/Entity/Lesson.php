@@ -49,6 +49,16 @@ class Lesson
      */
     private $iduser;
 
+    /**
+     * @ORM\Column(type="datetime")
+     */
+    private $dateTimeEnd;
+
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $color;
+
     public function __construct()
     {
         $this->iduser = new ArrayCollection();
@@ -139,6 +149,30 @@ class Lesson
     public function removeIduser(User $iduser): self
     {
         $this->iduser->removeElement($iduser);
+
+        return $this;
+    }
+
+    public function getDateTimeEnd(): ?\DateTimeInterface
+    {
+        return $this->dateTimeEnd;
+    }
+
+    public function setDateTimeEnd(\DateTimeInterface $dateTimeEnd): self
+    {
+        $this->dateTimeEnd = $dateTimeEnd;
+
+        return $this;
+    }
+
+    public function getColor(): ?string
+    {
+        return $this->color;
+    }
+
+    public function setColor(string $color): self
+    {
+        $this->color = $color;
 
         return $this;
     }

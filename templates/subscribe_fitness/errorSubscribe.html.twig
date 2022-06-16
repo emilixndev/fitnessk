@@ -1,11 +1,9 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Error{% endblock %}
+{% block title %}Abonnement{% endblock %}
 
 {% block body %}
     <style>
-
-
         .center{
             text-align: center;
         }
@@ -46,11 +44,15 @@
 
                 </td>
                 <td>{{sub.date|date("m/d/Y")}}</td>
-                <td>                       {%if sub.state == "firststep"%}
+                <td>
+                    {%if sub.state == "en_attente"%}
                         En cours de validation
-                    {%else%}
+                    {%elseif sub.state == "valide"%}
                         Validé
-                    {%endif%}</td>
+                    {%else%}
+                        Refusé
+                    {%endif%}
+                </td>
                 <td>
                     <ul>
                         {% for option in sub.options %}

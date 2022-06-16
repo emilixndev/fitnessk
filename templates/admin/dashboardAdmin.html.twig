@@ -1,8 +1,42 @@
 {%extends "@EasyAdmin/page/content.html.twig"%}
 
 {%block content%}
-    <br/>
-Bienvenue sur le dashboard
+
+
+
+    <div style="width: 30%; margin-left: 40%">
+
+        <canvas id="myChart"></canvas>
+
+    </div>
+
+
+     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script>
+
+
+        const ctx = document.getElementById('myChart').getContext('2d');
+        const myChart = new Chart(ctx, {
+            type: 'doughnut',
+            data: {
+                labels: [
+                    'En Attente',
+                    'Validé',
+                    'Refusé',
+                ],
+                datasets: [{
+                    label: 'Repartition des abonnements',
+                    data: [{{ waiting }}, {{ validate }}, {{ refuse }}],
+                    backgroundColor: [
+                        'rgb(252,145,55)',
+                        'rgb(0,255,7)',
+                        'rgb(255,0,0)'
+                    ],
+                    hoverOffset: 4
+                }]
+            },
+        });
+    </script>
 
 
 {%endblock%}
