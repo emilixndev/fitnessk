@@ -14,6 +14,8 @@ $ php bin/console doctrine:database:create
 $ php bin/console doctrine:make:migration
 $ php bin/console doctrine:s:u --force
 ```
+N'oublier pas de changer la l'adresse de la base dans le ``.env``
+
 Pour un accès admin il vous faudra créer un utilsateur avec le role ```['ROLE_ADMIN']```
 
 
