@@ -27,13 +27,9 @@ class DashboardController extends AbstractDashboardController
      */
     public function index(): Response
     {
-
-
         $nbValidate = count($this->subscriptionRepository->findBy(['state'=>'valide']));
         $nbRefuse = count($this->subscriptionRepository->findBy(['state'=>'refuse']));
         $nbWaiting = count($this->subscriptionRepository->findBy(['state'=>'en_attente']));
-
-
         return $this->render("admin/dashboardAdmin.html.twig",[
             'validate' => $nbValidate,
             'refuse' => $nbRefuse,
@@ -52,23 +48,14 @@ class DashboardController extends AbstractDashboardController
     {
         yield MenuItem::linktoDashboard('Dashboard', 'fa fa-home');
 
-
-
-
         yield MenuItem::section("Abonnement","fas fa-store-alt");
-
         yield MenuItem::linkToCrud('Liste abonnement', 'fas fa-list', Subscription::class);
-
 
         yield MenuItem::section("Cours","fas fa-users");
         yield MenuItem::linkToCrud('Planning', 'fas fa-calendar', Lesson::class);
 
         yield MenuItem::section("réglage","fas fa-tools");
         yield MenuItem::linkToCrud('Adhérent', 'fas fa-user', User::class);
-
-
-
-
 
     }
 }

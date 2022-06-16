@@ -93,7 +93,6 @@ class Option
         if ($this->subscriptions->removeElement($subscriptions)) {
             $subscriptions->removeOption($this);
         }
-
         return $this;
     }
 

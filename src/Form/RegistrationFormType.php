@@ -24,7 +24,6 @@ class RegistrationFormType extends AbstractType
         $builder
             ->add('email',EmailType::class,[
                 'label'=>'Email :',
-
             ])
             ->add('plainPassword', PasswordType::class, [
                 'label'=>'Mot de passe : ',
@@ -58,8 +57,6 @@ class RegistrationFormType extends AbstractType
                     'Homme' => "male",
                     'Femme' => 'female',
                 ),))
-
-
         ;
     }
 

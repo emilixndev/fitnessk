@@ -3,35 +3,21 @@
 {% block title %}Hello SubscribeFitnessController!{% endblock %}
 
 {% block body %}
-
     {% include "templatePart/navbar.html.twig"%}
-
     <div class="container">
-
-
-
-    <h1> Demande d'inscription</h1>
-
+        <h1> Demande d'inscription</h1>
         <div class="form-control">
-    {{ form_start(form) }}
+            {{ form_start(form) }}
 
+            {{ form_row(form.startdate)}}<br>
+            {{ form_row(form.options, {'attr': {'class': 'form-control'}}) }}<br>
 
-    {{ form_row(form.startdate)}}<br>
-    {{ form_row(form.options, {'attr': {'class': 'form-control'}}) }}<br>
+            {{ form_row(form.type)}}<br>
 
-    {{ form_row(form.type)}}<br>
+            <button type="submit" class="btn btn-success">Valider</button>
+            <button type="reset" class="btn btn-danger">Effacer</button>
 
-
-
-    <button type="submit" class="btn btn-success">Valider</button>
-    <button type="reset" class="btn btn-danger">Effacer</button>
-
-
-
-
-
-
-    {{ form_end(form) }}
-</div>
+            {{ form_end(form) }}
+        </div>
     </div>
 {% endblock %}

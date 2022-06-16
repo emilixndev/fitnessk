@@ -1,8 +1,5 @@
 {% extends 'base.html.twig' %}
 
-
-
-
 {%block body%}
     <style>
         .nav{
@@ -14,26 +11,25 @@
         <div class="container-lg" >
             <a class="navbar-brand" href="{{path('home') }}">FitnessK</a>
             <!-- Btn pour cacher-->
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls=".navbar-collapse" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <ul class="nav navbar-nav navbar-right">
-                <li><a class="nav-item nav-link nav-category" href="{{ path('calendar') }}">Planning des cours</a></li>
-                {% if is_granted('ROLE_ADMIN') %}
-                    <li><a class="nav-item nav-link nav-category" href="{{ path('admin') }}">Panel admin</a></li>
-                    {%else%}
-                        <li><a class="nav-item nav-link nav-category" href="{{ path('subscribe_fitness') }}">Abonnement</a></li>
-                {% endif %}
-
-                {% if app.user %}
-                    <li><a class="nav-item nav-link nav-category" href="{{ path('app_logout') }}">Déconnexion</a></li>
-                {% else %}
-                    <li><a class="nav-item nav-link nav-category" href="{{ path('app_register') }}">Enregistrement</a></li>
-                    <li><a class="nav-item nav-link nav-category" href="{{ path('app_login') }}">Connexion</a></li>
-                {% endif %}
-
+                <div class="navbar-collapse collapse w-100 order-1 order-md-0 dual-collapse2">
+                    <li><a class="nav-item nav-link nav-category" href="{{ path('calendar') }}">Planning des cours</a></li>
+                    {% if is_granted('ROLE_ADMIN') %}
+                        <li><a class="nav-item nav-link nav-category" href="{{ path('admin') }}">Panel admin</a></li>
+                        {%else%}
+                            <li><a class="nav-item nav-link nav-category" href="{{ path('subscribe_fitness') }}">Abonnement</a></li>
+                    {% endif %}
+                    {% if app.user %}
+                        <li><a class="nav-item nav-link nav-category" href="{{ path('app_logout') }}">Déconnexion</a></li>
+                    {% else %}
+                        <li><a class="nav-item nav-link nav-category" href="{{ path('app_register') }}">Enregistrement</a></li>
+                        <li><a class="nav-item nav-link nav-category" href="{{ path('app_login') }}">Connexion</a></li>
+                    {% endif %}
+                </div>
             </ul>
-        </div>
         </div>
     </nav>
 

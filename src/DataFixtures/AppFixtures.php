@@ -13,12 +13,8 @@ class AppFixtures extends Fixture
 {
     public function load(ObjectManager $manager): void
     {
-        // $product = new Product();
-        // $manager->persist($product);
+
         $faker = Faker\Factory::create('fr_FR');
-
-
-
         $option1 = new Option();
         $option1->setName("Soir et WE")->setPrice($faker->randomNumber(2));
         $option2 = new Option();
@@ -29,25 +25,16 @@ class AppFixtures extends Fixture
         $manager->persist($option1);
         $manager->persist($option2);
         $manager->persist($option3);
-
-
-
-
         $tabSub = [];
-
         for ($i = 0; $i <= 30; $i++) {
             $Subscription = new Subscription();
             $Subscription
                 ->setDate($faker->dateTime)
-                ->setMembercard($faker->creditCardNumber)
-            ;
-
+                ->setMembercard($faker->creditCardNumber);
             for ($u = 0; $u <$faker->numberBetween(0,sizeof($tabOption)); $u++){
 
                 $Subscription->addOption($tabOption[$u]);
-
             }
-
             $tabSub [] = $Subscription;
             $manager->persist($Subscription);
         }
@@ -60,13 +47,8 @@ class AppFixtures extends Fixture
                 ->setPassword($faker->password)
                 ->setSub($tabSub[$i])
             ;
-
             $manager->persist($user);
         }
-
-
-
-
         $manager->flush();
     }
 

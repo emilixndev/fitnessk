@@ -16,16 +16,4 @@ class CalendarController extends AbstractController
         ]);
     }
 
-    #[Route('/show_calendar_details/{id}', name: 'show_calendar_details')]
-    public function show_riv_calendar_details($id): Response
-    {
-         dd($id);
-        return $this->render('calendar/index.html.twig', [
-            'controller_name' => 'CalendarController',
-        ]);
-    }
-
-
-
-
 }

@@ -22,7 +22,6 @@ class CommandCrudController extends AbstractCrudController
     public function configureFields(string $pageName): iterable
     {
         return [
-
             NumberField::new('id'),
             DateField::new('date'),
             AssociationField::new('user',"Adherent"),

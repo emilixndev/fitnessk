@@ -51,7 +51,6 @@ class SubscriptionCrudController extends AbstractCrudController
             })
         ;
 
-
         $refuse = Action::new('Refuse', 'Refuser')
             ->setIcon('fa fa-close')
             ->linkToCrudAction('refuse_sub')
@@ -63,8 +62,6 @@ class SubscriptionCrudController extends AbstractCrudController
                 return false;
             })
         ;
-
-
 
         return $actions->add(Crud::PAGE_INDEX,$refuse)
                         ->add(Crud::PAGE_INDEX,$validate);

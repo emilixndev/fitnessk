@@ -32,7 +32,6 @@ class CalendarSubscriber implements EventSubscriberInterface
         $start = $calendar->getStart();
         $end = $calendar->getEnd();
 
-
         $Lessons = $this->lessonRepository
             ->createQueryBuilder('lesson')
             ->where('lesson.date BETWEEN :start and :end')
@@ -48,7 +47,7 @@ class CalendarSubscriber implements EventSubscriberInterface
                 $lessonEvent = new Event(
                     $lesson->getName(),
                     $lesson->getDate(),
-                    $lesson->getDateTimeEnd() // If the end date is null or not defined, a all day event is created.
+                    $lesson->getDateTimeEnd()
                 );
                 $lessonEvent->setOptions([
                     'backgroundColor' => $lesson->getColor(),

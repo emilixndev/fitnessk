@@ -21,10 +21,6 @@ class SubscribeType extends AbstractType
                 "label" => "Date de début :"
             ])
 
-
-
-
-
             ->add('options',ChoiceType::class,[
                 "label" => "Choix de l'option : ",
                 "multiple"=>true,
@@ -36,8 +32,6 @@ class SubscribeType extends AbstractType
 
             ])
 
-
-
             ->add('type',ChoiceType::class,array(
                 "label" => "Engagement : ",
                 'expanded' => true,
@@ -46,8 +40,6 @@ class SubscribeType extends AbstractType
                     'Sans engagement (40€ par mois)' => false,
                     'Avec engagement de 1an (25€ par mois)' => true,
                 ),))
-
-
         ;
     }
 
@@ -55,7 +47,6 @@ class SubscribeType extends AbstractType
     public function configureOptions(OptionsResolver $resolver): void
     {
         $resolver->setDefaults([
-
         ]);
     }
 

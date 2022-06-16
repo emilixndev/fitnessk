@@ -89,12 +89,10 @@ class Command
     public function removeArticle(Article $article): self
     {
         if ($this->article->removeElement($article)) {
-            // set the owning side to null (unless already changed)
             if ($article->getCommand() === $this) {
                 $article->setCommand(null);
             }
         }
-
         return $this;
     }
 }

@@ -9,19 +9,12 @@
         }
     </style>
     {% include "templatePart/navbar.html.twig"%}
-
     <div class="container">
-
     <div class="center">
-
     <br>
-
     <p class="center">{{ message}}</p>
-
     {% if sub is defined %}
-
         <h2>Récap de votre demande</h2>
-
         <table class="table table-striped">
             <thead>
             <tr>
@@ -34,14 +27,11 @@
             <tbody>
             <tr>
                 <td>
-
                 {%if sub.type == "month"%}
                     Mensuelle
                     {%else%}
                         Annuelle
                     {%endif%}
-
-
                 </td>
                 <td>{{sub.date|date("m/d/Y")}}</td>
                 <td>
@@ -62,15 +52,9 @@
             </tr>
             </tbody>
         </table>
-
-
         </div>
-
         </div>
         {%else%}
         <p>Vous pouvez vous connecter <a href="{{path('app_login') }}">içi</a></p>
     {% endif%}
-
-
-
 {% endblock %}

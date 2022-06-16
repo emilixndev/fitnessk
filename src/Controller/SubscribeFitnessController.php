@@ -23,7 +23,6 @@ class SubscribeFitnessController extends AbstractController
     {
     }
 
-
     #[Route('/subscribe/fitness', name: 'subscribe_fitness')]
     public function index(Request $request): Response
     {
@@ -39,35 +38,33 @@ class SubscribeFitnessController extends AbstractController
                 "sub" => $this->getUser()->getSub()
             ]);
         }
+        $form = $this->createForm(SubscribeType::class);
+        $form->handleRequest($request);
+        if ($form->isSubmitted() && $form->isValid()) {
+            $user = $this->getUser();
+            $sub = new Subscription();
+            $sub->setDate($form->get("startdate")->getData());
+            $sub->setState("en_attente");
+            $type = "month";
+            if ($form->get("type")->getData()) $type = "year";
+            $sub->setType($type);
+            $user->setSub($sub);
+            $this->entityManager->persist($sub);
+            $this->entityManager->persist($user);
+            $this->entityManager->flush();
+            foreach ($form->get("options")->getData() as $option) {
+                $option = $this->optionRepository->find($option);
+                $option->addSubscription($sub);
+                $this->entityManager->persist($option);
+                $this->entityManager->flush();
+            }
+            $this->addFlash("success", "Votre demande d'abonnement à bien été pris en compte");
+            return $this->redirectToRoute("home");
+        }
 
-                $form = $this->createForm(SubscribeType::class);
-                $form->handleRequest($request);
-                if ($form->isSubmitted() && $form->isValid()) {
-                    $user = $this->getUser();
-                    $sub = new Subscription();
-                    $sub->setDate($form->get("startdate")->getData());
-                    $sub->setState("en_attente");
-                    $type = "month";
-                    if ($form->get("type")->getData()) $type = "year";
-                    $sub->setType($type);
-                    $user->setSub($sub);
-                    $this->entityManager->persist($sub);
-                    $this->entityManager->persist($user);
-                    $this->entityManager->flush();
-                    foreach ($form->get("options")->getData() as $option) {
-                        $option = $this->optionRepository->find($option);
-                        $option->addSubscription($sub);
-                        $this->entityManager->persist($option);
-                        $this->entityManager->flush();
-                    }
-                    $this->addFlash("success", "Votre demande d'abonnement à bien été pris en compte");
-
-                    return $this->redirectToRoute("home");
-                }
-
-                return $this->renderForm('subscribe_fitness/index.html.twig', [
-                    'form' => $form
-                ]);
+        return $this->renderForm('subscribe_fitness/index.html.twig', [
+            'form' => $form
+        ]);
 
 
     }
