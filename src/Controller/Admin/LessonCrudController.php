@@ -8,6 +8,7 @@ use EasyCorp\Bundle\EasyAdminBundle\Field\BooleanField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\ColorField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\DateField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\DateTimeField;
+use EasyCorp\Bundle\EasyAdminBundle\Field\NumberField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
 
 class LessonCrudController extends AbstractCrudController
@@ -26,7 +27,7 @@ class LessonCrudController extends AbstractCrudController
             DateTimeField::new('datetimeend',"Fin"),
             BooleanField::new("enable","Valide"),
             ColorField::new("color","Couleur"),
-            TextField::new("nbmax")->onlyOnForms(),
+            NumberField::new("nbmax")->onlyOnForms(),
             BooleanField::new("full")->onlyOnForms()
 
         ];
